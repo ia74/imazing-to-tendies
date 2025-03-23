@@ -1,4 +1,4 @@
-descriptorsPath = "Container/Library/Application Support/PRBPosterExtensionDataStore/61/Extensions"
+descriptorsPath = "Container/Library/Application Support/PRBPosterExtensionDataStore/61/Extensions/com.apple.WallpaperKit.CollectionsPoster"
 tmpPath = "./tmp/"
 # import zip
 import zipfile
@@ -42,18 +42,14 @@ def dirTree(path, level=0, walk=True):
 if not os.path.exists(tmpPath + descriptorsPath):
     print("No PosterBoards found.")
     sys.exit(0)
-
-foundDirectories = dirTree(tmpPath + descriptorsPath, walk=False)
 foundDescriptors = []
 
-for directory in foundDirectories:
-    if not os.path.exists(tmpPath + descriptorsPath + "/" + directory + "/configurations"):
-        print("No descriptors found for " + directory)
-        continue
-    tree = dirTree(tmpPath + descriptorsPath + "/" + directory + "/configurations", walk=False)
-    for item in tree:
-        print("Found descriptor: " + item +" in " + directory)
-        foundDescriptors.append(tmpPath + descriptorsPath + "/" + directory + "/configurations/" + item)
+realPath = tmpPath + descriptorsPath
+tree = dirTree(tmpPath + descriptorsPath + "/configurations", walk=False)
+for item in tree:
+  print("Found descriptor: " + item +" in " + tmpPath + descriptorsPath + "/configurations/" + item)
+  foundDescriptors.append(tmpPath + descriptorsPath + "/configurations/" + item)
+    
 print()
 print("The file with the name " + outputName + ".tendies will be created in the current directory.")
 print("IF A FILE WITH THE SAME NAME ALREADY EXISTS, IT WILL BE OVERWRITTEN.")
