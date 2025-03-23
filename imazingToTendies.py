@@ -49,7 +49,7 @@ tree = dirTree(tmpPath + descriptorsPath + "/configurations", walk=False)
 for item in tree:
   print("Found descriptor: " + item +" in " + tmpPath + descriptorsPath + "/configurations/" + item)
   foundDescriptors.append(tmpPath + descriptorsPath + "/configurations/" + item)
-    
+print("That\'s " + str(len(foundDescriptors)) + " descriptors found.")
 print()
 print("The file with the name " + outputName + ".tendies will be created in the current directory.")
 print("IF A FILE WITH THE SAME NAME ALREADY EXISTS, IT WILL BE OVERWRITTEN.")
